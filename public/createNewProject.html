@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manditory1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Start project med Node.js and Express</h1>
+    <ol>
+        <li>Lav en app.js fil</li>
+        <li>Brug kommandoen ”npm init –y”</li>
+            <p><em>- for forklaring af kommandoen se kommandoer</em></p>
+        </li>
+        <li>Brug kommandoen “npm install express”
+            <p><em>- for forklaring af kommandoen se kommandoer</em></p>
+        </li>
+        <li>Tilføj ”type”: ”module” til din package.json under dependencies, dette vil gøre at du kan bruge import / eksport i dine .js filer.</li>
+        <pre> {
+            "dependencies": {
+              "express": "^4.18.2"
+            },
+            "name": "aflevering",
+            "version": "1.0.0",
+            "main": "app.js",
+            "type": "module",
+            "devDependencies": {},
+            "scripts": {
+              "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "keywords": [],
+            "author": "",
+            "license": "ISC",
+            "description": ""
+          }</pre>
+        <li>Import express og path, hvilket gør at man kan benytte sig af express og path, path skal bruges senere</li>
+        <pre> 
+            import express from 'express'
+            import path from 'path'
+        </pre>
+        <li>Så skal der instantieres en ny express app</li>
+        <pre>
+            Const app = express()
+        </pre>
+        <li>Vi laver en variable der hedder port, som fortæller hvilken port at appen lytter på</li>
+        <pre>Const port = 8080</pre>
+        <li>Så skal appen sættes til aktivt at lytte på porten, og give en besked, hvis det fungerer.</li>
+        <pre>
+            app.listen(PORT, () => {
+            console.log("App is running on port: ", PORT)
+        })
+        </pre>
+        <li>Der kan tilføjes en håndtering af get request på localhost:8080/ , og give en html side tilbage sådan her. Path.resolve tager imod en relativ path, og returnerer en absoulut path</li>
+        <pre>            
+            app.get("/", (req, res) => {
+                res.sendFile(path.resolve("./public/home.html" ))
+            })
+        </pre>
+        <li>Brug kommandoen: ”node .\ app.js” for at køre programmet.</li>
+
+    </ol>
+</body>
+</html>

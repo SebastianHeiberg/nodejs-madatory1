@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Mandatory1</title>
+</head>
+<body>
+    <h1>Rest API</h1>
+
+    <h3>Opbygning af rest api</h3>
+    <p>Det er konventionen at navnet på dine endpoint, tager udgangspunkt i den table som det henter data fra.</p>
+    <p>Så er det en tabel der omhander bjerge/mountains, så vil navngivningen skulle afspejle mountains. </p>
+    <P>Det forventes at der er et endpoint for at henholdsvis skabe data, læse data, redigerer data og slette data.</P>
+    <p>Disse fire funktioner kaldes også Create, Read, update, Delete eller forkortet CRUD.</p>
+    <P>I node kunne de fire endpoints se således ud:</P>
+
+    <pre>
+        app.get("/mountains", (req, res) => {
+            
+            //code that gets a list of mountains
+
+            res.send({ data: mountainslist });
+          });
+          
+          app.get("/mountains/:id", (req, res) => {
+            
+            //code that finds a mountain based on the paramater id
+
+
+              return res.send({ data: foundMountain });
+            }
+          );
+          
+          app.post("/mountains", (req, res) => {
+            
+            //code that adds a mountain to the database, based on the req.body
+
+            res.send({ data: mountain });
+            }
+          );
+          
+          app.put("/mountains/:id",  (req, res) => {
+
+            //code that updates a specific mountain based on the req.body
+
+              return res.send({ data: foundMountain });
+            }
+          );
+          
+          app.delete("/mountains/:id", (req, res) => {
+            
+            //code that deletes a mountain in the database based on the paramater id 
+            //could fx return the id of the mountain deleted
+          });
+
+    </pre>
+
+    <h3>Navngivning</h3>
+
+    <p>Igen med udgangspunkt i mountain data, kan det nedenfor ses at der navngives 'mountains', så at navnet er i flertal.</p>
+    <p>De endpoints der håndterer enkelt instanser, vil skulle bruge en måde at identificere hvad de skal ændre på, til hvilket der tilføjes '/{id}', der giver et paramenter, der skal henvise til instansens id. </p>
+    <pre>
+    Method      endpoint
+
+    GET         /mountains
+    GET         /mountains/:id
+
+    POST        /mountains
+
+    PATCH       /mountains/:id
+    PUT         /mountains/:id
+
+    DELETE      /mountains/:id
+    </pre>
+
+    <h3>Returdata</h3>
+    <p>Det er forventet at det som sendes retur, kommer i JSON format, hvilket gør at forskellige programmer kan kommunikerer med vores API, da alle programmer har måder at håndterer JSON.</p>
+
+</body>
+</html>
