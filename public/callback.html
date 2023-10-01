@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Mandatory1</title>
+</head>
+<body>
+    <h1>Callback</h1>
+    <p>En callback funktion, er en funktion der tager en funktion som argument, for at kunne udføre sin opgave.</p>
+    <pre> 
+        
+        let inputTekst = 'Dette er min tekst'
+        
+        function konverterTekst(tekst, callback) {   
+              const konverteretTekst = tekst.toUpperCase()
+              callback(konverteretTekst)
+          }
+          
+          function visResultat(resultat) {
+            console.log('Konverteret tekst:', resultat)
+          }
+                    
+          konverterTekst(inputTekst, visResultat);    
+        </pre>
+
+    <p> 
+        I dette eksempel er konverterTekst en funktion, der konvertere den indgående tekst til store bogstaver.
+        Den tager to argumenter: tekst (den indgående tekst) og callback (callback-funktionen). Tekststrengen konverteres til store bogstaver, og callback-funktionen (visResultat) udføres med den konverterede tekst som argument.
+    </p>
+    <p>
+        Når konverterTekst kaldes med inputTekst og visResultat som callback, udføres visResultat-funktionen med den konverterede tekst, og resultatet vises i konsollen.
+    </p>
+    <h3>Callback med en arrow function</h3>
+    <p>En callback behøver ikke kun at skulle tage en definret funktion som argument, her er et udklip fra en fetch metode, hvor det er .then bruger en callback:</p>
+    <pre>
+        const result = fetch("http://localhost:8080/students")
+        .then((response) => response.json())
+        .then((result) => {
+            return result.map(student => {
+                return {
+                    name: student.name,
+                    age: student.age,
+                }
+            })
+    </pre>
+    <p>Det kan ses her hvordan at i den første .then bruges response som parameter og fortæller at der skal returnes response.json()</p>
+    <p>I det andet .then bruges også en callback function, som her har response som parameter.</p>
+    <p>Til sammenligning kunne man lige så godt have skrevet koden:</p>
+    <pre>
+        const result = fetch("http://localhost:8080/students")
+        .then(jsonresponse)
+        .then((result) => {
+            return result.map(student => {
+                return {
+                    name: student.name,
+                    age: student.age,
+                }
+            })
+
+        function jsonresponse (response){
+            return response.json()
+        }
+    </pre>        
+</body>
+</html>
+
