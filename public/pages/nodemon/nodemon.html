@@ -1,0 +1,47 @@
+<h1>Nodemon</h1>
+<p>
+  Nodemon er værktøj til Node.js udvikling, der overvåger filændringer i din
+  Node.js-applikation automatisk og genstarter serveren, hver gang du gemmer
+  ændringer i dine filer. Dette er smart når du er igang med at udvikle din
+  applikation, da det sparer dig for besværet med manuelt at genstarte serveren
+  efter hver ændring i din kode.
+</p>
+<p>For at installere nodemon i din application kan du skrive i konsollen:</p>
+<pre>
+    npm install nodemon
+    // Eller for globalt installation: npm install -g nodemon
+</pre>
+
+<p>
+  Når nodemon er installeret, vil man kunne køre en fil med ”nodemon (filnavn):”
+</p>
+<pre>
+    nodemon.cmd ./app.js
+    //bemærk at .cmd er specifikt for windows
+</pre>
+
+<p>
+  Når man kører sit program gennem nodemon, kunne det se sådan ud i konsollen:
+</p>
+
+<pre>
+    [nodemon] 3.0.1
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching path(s): *.*
+    [nodemon] watching extensions: html,js,json,css
+    [nodemon] starting `node app.js`
+    App is running on port:  8080
+</pre>
+
+<p>
+  Alt efter hvad man ønsker skal trigge en genstart af severen, kan man lave en
+  nodemon.json fil, som indeholder de filtyper (extensions) som nodemon skal
+  være opmærksom på, i ovenstående tilfælde er det html,js,json,css. Disse
+  extensions er defineret i package.json filen sådan her:
+</p>
+
+<pre>
+    {
+        "ext": "html,js,json,css"
+    }
+</pre>

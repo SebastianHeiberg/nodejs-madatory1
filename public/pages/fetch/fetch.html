@@ -1,0 +1,52 @@
+
+<h1>Fetch metoden</h1>
+
+<p>En simpel fetch, der gemmes i en variabel kan skrives</p>
+
+<pre> 
+    const result = fetch("http://localhost:8080/students")
+</pre>
+
+<p>Denne fetch ville implicit bruge en GET metode, til at hente data fra http adressen. Men dataen kan ikke umiddelbart bruges endnu. 
+    Ved første step er result en readable stream, som er en byte stream. Man skal derefter til at behandle denne bytestream.</p>
+
+<pre>
+    const result = fetch("http://localhost:8080/students")
+    .then( response => response.json())
+</pre>
+
+<p>Der bliver her tilføjet et .then, som når det bitestreamen er slut, bruger en callback function, og tager dennes response og laver om til json, 
+    hvilket tager noget tid afhængigt af mængden af data. Næste skridt er at behandle resultatet </p>
+
+<pre>
+    const result = fetch("http://localhost:8080/students")
+    .then((response) => response.json())
+    .then((result) => {
+        return result.map(student => {
+            return {
+                name: student.name,
+                age: student.age,
+            }
+        })
+</pre>
+
+<p>I det næste .then bliver den færdige json behandlet gennem en callback function, med parameteret result. Hvordan den json er struktureret afhænger af det man fethcer,
+    men her kunne det være en liste af students fra et endpoint, som vi vælger at mappe til en liste af objekter, der for hver student henter et navn og en alder ud. 
+</p>
+
+<p>Et andet eksempel på en fetch kunne være en post metode.</p>
+
+<pre>
+    fetch("http://localhost:8080/students", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', 
+        },
+        body: data, 
+    })
+</pre>
+
+<p>Her er formålet at sende noget data til et endpoint, hvorfor at det skal specificeres at det er en POST metode. Der kan også laves headers der kunne sige noget om formatet på det som sendes,
+    det kunne også være ifht. authorisation. Når der sendes en post, skal der tilhørende også være en body, som indeholder det data, som der skal behandles. </p>
+
+<p>Foruden GET og POST, er der også PATCH, PUT og DELETE som metode muligheder. Se mere under REST.</p>

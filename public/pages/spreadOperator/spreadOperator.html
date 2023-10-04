@@ -1,0 +1,17 @@
+<h1>Spread operatoren</h1>
+
+<p>Man kan bruge spreadoperatoren, hvis man fx vil kopierer et array ind et nyt, og ikke komme ud for,
+     at hvis der ændres i det første, så påvirker det det nye. Et eksempel kunne være følgende:</p>
+
+<pre>
+    const oprindeligtObjekt = { a: 1, b: 2 }
+    const nytObjekt = { ...oprindeligtObjekt }
+</pre>
+
+<p>Man kan også sætte kopierer elementer ind midt i et array </p>
+
+<pre>
+    const kropsdele = ["skuldre", "knæ"];
+    const børnesang = ["hoved", ...kropsdele, "og", "tå"];
+</pre>
+<p>Hvis man printede denne børnesang, ville det give et output med ["hoved", "skuldre", "knæ", "og", "tå"]</p>
