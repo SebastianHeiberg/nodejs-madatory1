@@ -60,16 +60,24 @@ const adminPagePage = renderPage(adminPage)
 const datePage = readpage("./public/pages/date/date.html")
 const datePagePage = renderPage(datePage)
 
+const ssrPage = readpage("./public/pages/serverside-rendering/serversideRedering.html")
+const ssrPagePage = renderPage(ssrPage)
+
+
 //mappings
 
 app.get("/", (req, res) => {
     res.send(frontpagePage)
 })
 
+app.get("/ssr", (req, res) => {
+    res.send(ssrPagePage)
+})
+
 app.get("/date", (req, res) => {
     res.send(datePagePage)
 })
-
+  
 app.get("/admin", (req, res) => {
     res.send(adminPagePage)
 })
@@ -125,6 +133,19 @@ app.get("/fetch", (req, res) => {
 app.get("/rest", (req, res) => {
     res.send(restpagePage)
 })
+
+app.post("/login", (req, res) => {
+    const { username, password } = req.body
+  
+    if (username === "admin" && password === "1234") {
+      res.status(200).redirect("/admin")
+    } else{
+        res.send({ data: 'Password or Username invalid' })
+    }
+  })
+
+
+
 
 app.listen(PORT, () => {
     console.log("App is running on port: ", PORT)

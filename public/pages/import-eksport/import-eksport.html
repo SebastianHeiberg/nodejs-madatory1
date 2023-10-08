@@ -1,0 +1,33 @@
+<h1>Import af filer eller funktioner</h1>
+
+<h3>eksport af funktion</h3>
+<p>
+  I javascript kan man eksporterer funktioner ved at skrive export foran for
+  funktionen
+</p>
+<pre>
+    export function myfunction() {
+        //noget kode
+    }
+</pre>
+
+<h3>Import</h3>
+<p>
+  En "gammel" måde at importerer på, er ved bruge af 'require', der er en del af
+  CommonJS-modulesystemet, når man bruger require, kan der indlæses funktioner,
+  variabler eller objekter fra andre filer eller indbyggede Node.js-moduler.
+  Brug af require kunne gøres sådan
+</p>
+<pre>
+    const express = require('express')
+</pre>
+<p>
+  Den nyere metode er 'import', der blev implementerer i ES6 (2015), alle import
+  statements placeres først i koden, og henter modulerne asynkront. For at
+  javascript filerne kan genkendes som moduler, skal der dog erklæres i
+  package.js, at programmet gør brug af moduler ("Oprettelse af nyt projekt").
+  En import kunne se således ud:
+</p>
+<pre>
+    import fs from 'fs'
+</pre>
