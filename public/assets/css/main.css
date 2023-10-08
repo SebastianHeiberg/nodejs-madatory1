@@ -7,10 +7,11 @@ body {
 }
 
 #sidebar {
-
+    min-width: 200px;
     width: 250px;
     background-color: lightblue;
     padding: 20px;
+    overflow-y: auto;
 }
 
 main {
@@ -23,6 +24,9 @@ main {
 .sidebar-list {
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        max-height: 90vh;
+
     }
 
 .list-item {
@@ -47,3 +51,5 @@ main {
     background-color: #4CAF50; /* Active page background color */
     color: #fff; /* Active page text color */
 }
+
+

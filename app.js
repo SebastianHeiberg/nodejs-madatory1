@@ -22,7 +22,9 @@ const restpagePage = renderPage(restPage)
 const createnewprojctPage = readpage("./public/pages/createnewprojct/createNewProject.html")
 const createnewprojctPagePage = renderPage(createnewprojctPage)
 
-const loginPage = readpage("./public/pages/login/login.html")
+const loginPage = readpage("./public/pages/login/login.html", {
+    cssLinks: `<link rel="stylesheet" href="./public/pages/login/login.css">`
+})
 const loginPagePage = renderPage(loginPage)
 
 const callbackPage = readpage("./public/pages/callback/callback.html")
@@ -49,10 +51,31 @@ const packagejsonPagePage = renderPage(packagejsonPage)
 const readfilesPage = readpage("./public/pages/readfiles/readfiles.html")
 const readfilesPagePage = renderPage(readfilesPage)
 
+const loopsPage = readpage("./public/pages/loops/loops.html")
+const loopsPagePage = renderPage(loopsPage)
+
+const adminPage = readpage("./public/pages/admin/admin.html")
+const adminPagePage = renderPage(adminPage)
+
+const datePage = readpage("./public/pages/date/date.html")
+const datePagePage = renderPage(datePage)
+
 //mappings
 
 app.get("/", (req, res) => {
     res.send(frontpagePage)
+})
+
+app.get("/date", (req, res) => {
+    res.send(datePagePage)
+})
+
+app.get("/admin", (req, res) => {
+    res.send(adminPagePage)
+})
+
+app.get("/loops", (req, res) => {
+    res.send(loopsPagePage)
 })
 
 app.get("/readfiles", (req, res) => {

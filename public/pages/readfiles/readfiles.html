@@ -1,1 +1,31 @@
 <h1>At læse filer</h1>
+
+<p>For at kunne læse en fil, er det nødvendigt at importere node.js filsystem</p>
+<pre>Import fs from 'fs'</pre>
+<p>Når dette er importeret, kan man læse en fil</p>
+<pre>
+    
+    export function readpage (filepath) {
+        return fs.readFileSync(filepath).toString()
+    }
+</pre>
+<p>Dette eksempel bruger fs til at læse en fil, her synkront, ud fra den sti der er givet og returnerer det som en String.</p>
+
+<h3>At læse fra en json fil</h3>
+
+<p>Her er et eksempel på at læse fra en jsonfil, som egentlig ikke adskiller sig fra at læse fx en html fil.
+</p>
+
+<pre>
+    async function readMountains() {
+        const mountains = await fs.readFile(`data/mountains.json`, "utf-8", (err) => {
+          if (err) {
+            console.log("failed to read file");
+          }
+        });
+      
+        const mountainsJson = JSON.parse(mountains);
+        return mountainsJson;
+      }
+</pre>
+<p> Det som her adskiller sig fra det første eksempel er brugen af async/await, og at det som metoden returnerer er i json format.</p>

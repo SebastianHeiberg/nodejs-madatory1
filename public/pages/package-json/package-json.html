@@ -1,1 +1,37 @@
 <h1>Package.json</h1>
+
+<p>Til at forstå en package.json fil, gives der her et eksempel for dette projekt:</p>
+<pre>
+    "dependencies": {
+        "cross-env": "^7.0.3",
+        "express": "^4.18.2"
+      },
+      "name": "aflevering",
+      "version": "1.0.0",
+      "main": "app.js",
+      "type": "module",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start:dev": "cross-env PORT=8080 nodemon app.js",
+        "start:prod": "cross-env PORT=80 node app.js"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "description": ""
+    }    
+</pre>
+<p>Filen kan deles op i tre, meta info, scripts og dependencies.</p>
+
+<p>Det som meta info fortæller om, er hvad der er vigtigt, hvis en app skal deles online, derfor indeholder den information om projektet som auther, licens, versionen. 
+    Bemærk at hvis det ikke er hensigten at projektet skal deles, kan man godt undlade at udfylde felter, da det ikke påvirker funktionaliteten af applicationen. </p>
+
+<p>Dependencies fortæller hvad der skal importeres, for at programmet kan køre. Hver dependency har en key og en value, 
+    som f.eks. keyen 'expres' og dens value "^4.18.2" der er versionen. Hvis man importerer et program med en package.json fil tilhørende, 
+    vil man kunne bruge kommandoen 'npm install' og npm vil så installere de dependencies der står listen, med den tilhørende version.</p>
+
+<p>Scripts giver mulighed for at køre længere terminalcommandoer, gemt i et key-value par, så man fx som i ovenstående kun vil bruge nodemon i et udviklingsmiljø, 
+    så kan man starte "start:dev". Måden man kører et specifikt script er gennem konsollen med 'npm run (scriptnavn)' fx: </p>
+<pre>
+    npm run start:dev
+</pre>

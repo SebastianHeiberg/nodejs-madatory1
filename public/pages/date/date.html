@@ -1,0 +1,22 @@
+<h1>Datoer</h1>
+<p>Et dato objekt kan lave ret enkelt</p>
+<pre>
+    const idag = new Date()
+</pre>
+<p>På dette objekt kan der kaldes forskellige indbyggede metoder til at få adgang til de forskellige elementer af dagens dato</p>
+<pre>
+    const aar = idag.getFullYear() 
+    // Giver nuværende år (f.eks. 2023)
+    const maaned = idag.getMonth() 
+    // Giver den aktuelle måned (første måned er index 0, så januar er 0, februar er 1 osv.) 
+    const dag = idag.getDate() 
+    // giver den aktuelle dag i måneden (1-31)
+</pre>
+<p>Ønsker man at en måned skrives istedet for et tal, og på dansk kan det også gøres</p>
+<pre>
+    const paentFormateretDato = new Intl.DateTimeFormat('da-DK', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    }).format(iDag);
+</pre>
